@@ -1,5 +1,10 @@
 # TpSalaDeJuegos
 
+Alumno: Lautaro Monserrat
+Laboratorio IV - Jueves 18:30hs a 22:30hs
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
 
 ## Development server

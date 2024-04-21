@@ -1,4 +1,9 @@
 
 .ruta-activa {
-    background-color: rgb(232, 86, 86);
+    /* background-color: rgb(232, 86, 86); */
+    font-weight: 700;
+}
+
+.custom-nav {
+    background-color: rgb(195, 195, 195);
 }
