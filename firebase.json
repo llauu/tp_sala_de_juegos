@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/tp_sala_de_juegos",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
