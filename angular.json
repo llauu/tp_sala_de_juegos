@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "tp_sala_de_juegos": {
+    "tp-sala-de-juegos": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "tp_sala_de_juegos:build:production"
+              "buildTarget": "tp-sala-de-juegos:build:production"
             },
             "development": {
-              "buildTarget": "tp_sala_de_juegos:build:development"
+              "buildTarget": "tp-sala-de-juegos:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "tp_sala_de_juegos:build"
+            "buildTarget": "tp-sala-de-juegos:build"
           }
         },
         "test": {

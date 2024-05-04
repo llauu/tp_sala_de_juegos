@@ -1,0 +1,21 @@
+<h2>Registro</h2>
+
+
+<label for="">Correo electronico</label>
+<input type="text" [(ngModel)]="newEmail">
+
+<label for="">Contraseña</label>
+<input type="password" [(ngModel)]="newPass">
+
+@if (errorMsg != '') {
+    <p style="color: red">{{errorMsg}}</p>
+}
+
+<br><br>
+<button (click)="Register()">Registrarse</button>
+
+
+@if (loggedUser != '') {
+    <h2>Usuario registrado: {{loggedUser}}</h2>
+}
+

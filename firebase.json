@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/tp_sala_de_juegos",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
