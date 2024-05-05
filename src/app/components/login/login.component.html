@@ -17,3 +17,7 @@
 <!-- <button (click)="GetData()">Obtener logs</button> -->
 <br>
 <button routerLink="../register">Crear cuenta nueva</button>
+
+@if (loggedUser != '') {
+    <h3>Usuario iniciado: {{loggedUser}}</h3>
+}
