@@ -18,19 +18,17 @@ export class LoginComponent {
   loginsCollections: any[] = [];
   email: string = '';
   pass: string = '';
-  loggedUser: string = '';
   errorMsg: string = '';
 
   constructor(private firestore: Firestore, private router: Router, private authService: AuthService) {
 
   }
 
+
   login() {
     this.authService.login(this.email, this.pass)
       .then(res => {
         if(res.user.email !== null) {
-          this.loggedUser = res.user.email;
-
           // Registro login en la coleccion registros
           let col = collection(this.firestore, 'logins');
           addDoc(col, {'date': new Date(), 'user': this.email});
@@ -55,7 +53,27 @@ export class LoginComponent {
         }
       });
   }
+
+
+  loginWithGoogle() {
+    this.authService.loginWithGoogle()
+      .then(res => {
+        if(res.user.email !== null) {
+          // Registro login en la coleccion registros
+          let col = collection(this.firestore, 'logins');
+          addDoc(col, {'date': new Date(), 'user': res.user.email});
+
+          // Ruteo a la pagina de bienvenida
+          this.router.navigate(['/home']);
+        }
+      }
+      )
+      .catch(err => {
+        console.log(err);
+      });
+  }
   
+
   fillInputs() {
     const emailInput = document.getElementById('email') as HTMLInputElement;
     if (emailInput) {

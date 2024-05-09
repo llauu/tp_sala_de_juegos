@@ -1,8 +1,13 @@
+.main-h {
+    font-size: 55px;
+}
+
+
 .btn {
     width: 100%;
     background-color: #ffc007;
     color: black;
-    font-weight: bold;
+    font-weight: 600;
     border: black;
     font-size: large;
 }

@@ -7,6 +7,12 @@
     z-index: 1;
 }
 
+.google-icon {
+    width: 27px;
+    height: 27px;   
+    cursor: pointer;
+}
+
 .btn-login {
     width: 80%;
     font-weight: 900;
