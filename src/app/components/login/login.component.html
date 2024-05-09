@@ -2,21 +2,24 @@
 
 
 <label for="">Correo electronico</label>
-<input type="text" [(ngModel)]="email">
+<input id="email" type="text" [(ngModel)]="email">
 
 <label for="">Contraseña</label>
-<input type="password" [(ngModel)]="pass">
+<input id="pass" type="password" [(ngModel)]="pass">
 
 @if (errorMsg != '') {
     <p style="color: red">{{errorMsg}}</p>
 }
 
 <br><br>
-<button (click)="Login()">Iniciar sesion</button>
+<button (click)="login()">Iniciar sesion</button>
 
 <!-- <button (click)="GetData()">Obtener logs</button> -->
 <br>
 <button routerLink="../register">Crear cuenta nueva</button>
+
+<br>
+<button (click)="fillInputs()">Completar datos</button>
 
 @if (loggedUser != '') {
     <h3>Usuario iniciado: {{loggedUser}}</h3>

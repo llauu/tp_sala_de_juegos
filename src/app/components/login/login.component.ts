@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Firestore, collectionData } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { addDoc, collection } from 'firebase/firestore';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,6 @@ import { addDoc, collection } from 'firebase/firestore';
   styleUrl: './login.component.css'
 })
 
-
 export class LoginComponent {
   loginsCollections: any[] = [];
   email: string = '';
@@ -21,12 +21,12 @@ export class LoginComponent {
   loggedUser: string = '';
   errorMsg: string = '';
 
-  constructor(private firestore: Firestore, public auth: Auth) {
+  constructor(private firestore: Firestore, private router: Router, private authService: AuthService) {
 
   }
 
-  Login() {
-    signInWithEmailAndPassword(this.auth, this.email, this.pass)
+  login() {
+    this.authService.login(this.email, this.pass)
       .then(res => {
         if(res.user.email !== null) {
           this.loggedUser = res.user.email;
@@ -34,10 +34,13 @@ export class LoginComponent {
           // Registro login en la coleccion registros
           let col = collection(this.firestore, 'logins');
           addDoc(col, {'date': new Date(), 'user': this.email});
+
+          // Ruteo a la pagina de bienvenida
+          this.router.navigate(['/home']);
         }
       })
       .catch(err => {
-        console.log(err.code);
+        console.log(err);
         
         switch(err.code) {
           case 'auth/invalid-email': 
@@ -53,10 +56,21 @@ export class LoginComponent {
             break;
         }
       });
-
   }
-
-
+  
+  fillInputs() {
+    const emailInput = document.getElementById('email') as HTMLInputElement;
+    if (emailInput) {
+      emailInput.value = 'lautaro@mail.com';
+      this.email = 'lautaro@mail.com';
+    }
+    
+    const passInput = document.getElementById('pass') as HTMLInputElement;
+    if (passInput) {
+      passInput.value = '123lauty';
+      this.pass = '123lauty';
+    }
+  }
 
   // GetData() {
   //   let col = collection(this.firestore, 'logins');

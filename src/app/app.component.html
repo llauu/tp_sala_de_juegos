@@ -16,9 +16,27 @@
         <li class="nav-item mx-3">
           <a class="nav-link" routerLink="quien-soy" routerLinkActive="ruta-activa">Quien soy</a>
         </li>
-        <li class="nav-item mx-3">
-          <a class="nav-link" routerLink="login" routerLinkActive="ruta-activa">Iniciar sesion</a>
-        </li>
+
+        @if(this.isLoggedIn) {
+          <li class="nav-item dropdown mx-3">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <fa-icon [icon]="faUser"></fa-icon>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <h6 class="dropdown-header">Informacion del usuario</h6>
+              <div class="dropdown-divider"></div>
+              <span class="dropdown-item-text">{{ user }}</span> 
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)="logout()"><b>Cerrar sesion</b></a> 
+            </div>
+          </li>
+
+        }
+        @else {
+          <li class="nav-item mx-3">
+            <a class="nav-link" routerLink="login" routerLinkActive="ruta-activa">Iniciar sesion</a>
+          </li>
+        }
       </ul>
     </div>
   </nav>

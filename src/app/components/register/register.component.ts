@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { addDoc, collection } from 'firebase/firestore';
+import { Firestore } from '@angular/fire/firestore';
 
 
 @Component({
@@ -10,6 +13,7 @@ import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
+
 export class RegisterComponent {
   newEmail: string = '';
   newPass: string = '';
@@ -17,22 +21,21 @@ export class RegisterComponent {
   loggedUser: string = '';
   errorMsg: string = '';
 
-  constructor(public auth: Auth) {}
+  constructor(private firestore: Firestore, private authService: AuthService, private router: Router) {}
 
-  Register() {
-    createUserWithEmailAndPassword(this.auth, this.newEmail, this.newPass)
+  register() {
+    this.authService.register(this.newEmail, this.newPass)
       .then(res => {
         if(res.user.email !== null) {
-          this.loggedUser = res.user.email; 
+          this.loggedUser = res.user.email;
+
+          let col = collection(this.firestore, 'logins');
+          addDoc(col, {'date': new Date(), 'user': this.newEmail});
+
+          this.router.navigate(['/home']);
         }
       })
       .catch(err => {
-        console.log(err.code);
-
-        /*
-        
-        */
-
         switch(err.code) {
           case 'auth/invalid-email': 
             this.errorMsg = 'El correo electronico no es valido.';
