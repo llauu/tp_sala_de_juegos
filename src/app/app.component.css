@@ -9,9 +9,12 @@
     background-color: #E4E4E4;
     transition: all;
     padding: 0px 10px;
+    z-index: 2;
 }
 
 .nav-opt {
     background-color: #E4E4E4;
     cursor: pointer;
+    z-index: 2;
+    font-size: 17px;
 }

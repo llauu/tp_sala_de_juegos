@@ -12,5 +12,7 @@
 }
 
 .card {
-    border: none;
+    border: none; 
+    position: relative;
+    z-index: 1;
 }

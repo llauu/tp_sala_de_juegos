@@ -17,18 +17,17 @@ import { Firestore } from '@angular/fire/firestore';
 export class RegisterComponent {
   newEmail: string = '';
   newPass: string = '';
+  newConfirmPass: string = '';
 
-  loggedUser: string = '';
   errorMsg: string = '';
 
   constructor(private firestore: Firestore, private authService: AuthService, private router: Router) {}
 
   register() {
-    this.authService.register(this.newEmail, this.newPass)
+    if(this.newPass === this.newConfirmPass) {
+      this.authService.register(this.newEmail, this.newPass)
       .then(res => {
         if(res.user.email !== null) {
-          this.loggedUser = res.user.email;
-
           let col = collection(this.firestore, 'logins');
           addDoc(col, {'date': new Date(), 'user': this.newEmail});
 
@@ -53,6 +52,10 @@ export class RegisterComponent {
             this.errorMsg = 'La contraseña debe tener al menos 6 caracteres.';
             break;
         }
-      })
+      });
+    }
+    else {
+      this.errorMsg = 'Las contraseñas no coinciden.';
+    }
   }
 }

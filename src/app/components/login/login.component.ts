@@ -40,8 +40,6 @@ export class LoginComponent {
         }
       })
       .catch(err => {
-        console.log(err);
-        
         switch(err.code) {
           case 'auth/invalid-email': 
             this.errorMsg = 'El correo electronico no es valido.';
@@ -61,14 +59,14 @@ export class LoginComponent {
   fillInputs() {
     const emailInput = document.getElementById('email') as HTMLInputElement;
     if (emailInput) {
-      emailInput.value = 'lautaro@mail.com';
-      this.email = 'lautaro@mail.com';
+      emailInput.value = 'prueba@mail.com';
+      this.email = 'prueba@mail.com';
     }
     
     const passInput = document.getElementById('pass') as HTMLInputElement;
     if (passInput) {
-      passInput.value = '123lauty';
-      this.pass = '123lauty';
+      passInput.value = '123456';
+      this.pass = '123456';
     }
   }
 
