@@ -23,14 +23,14 @@
               <fa-icon [icon]="faUser"></fa-icon>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <h6 class="dropdown-header">Informacion del usuario</h6>
-              <div class="dropdown-divider"></div>
+              <div class="col text-center">
+                <img src="../assets/perfil.png" width="100" alt="Perfil">
+              </div>
               <span class="dropdown-item-text">{{ user }}</span> 
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" (click)="logout()"><b>Cerrar sesion</b></a> 
             </div>
           </li>
-
         }
         @else {
           <li class="nav-item mx-3">

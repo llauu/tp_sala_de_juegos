@@ -1,0 +1,16 @@
+.btn {
+    width: 100%;
+    background-color: #ffc007;
+    color: black;
+    font-weight: bold;
+    border: black;
+    font-size: large;
+}
+.btn:hover {
+    background-color: #ffa602;
+    color: black;
+}
+
+.card {
+    border: none;
+}
