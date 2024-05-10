@@ -1,0 +1,25 @@
+.card-header {
+    background-color: #E4E4E4;
+    border: none;
+}
+
+.custom-img {
+    border-radius: 50%;
+}
+
+.quiensoy-container {
+    z-index: 1;
+}
+
+.custom-icon {
+    font-size: 40px;
+}
+
+.h3-dato {
+    margin-bottom: 0;
+}
+
+.p-dato {
+    font-size: 18px;
+    margin-bottom: 0;
+}
