@@ -41,5 +41,51 @@
     </div>
   </nav>
 
+  @if(this.isLoggedIn) {
+    @if(!this.showChatWindow) {
+      <div class="chat-bubble shadow" (click)="toggleChatWindow()">
+        <fa-icon class="chat-icon" [icon]="faComment"></fa-icon>
+      </div>
+    }
+    
+    @if(this.showChatWindow) {
+      <div class="chat-window d-flex flex-column justify-content-between ">
+        <div class="chat-header">
+          <img src="../assets/icono.png" width="37" height="37" class="d-inline-block align-top mx-1 mt-1" alt="Icono">
+          <p class="h-chat mt-4">Chat</p>
+          <img src="../assets/fantasmas.png" width="65" height="65" class="d-inline-block align-top ms-1 ml-2 mt-2" alt="Icono">
+        
+          <fa-icon class="close-chat-icon" [icon]="faTimes" (click)="toggleChatWindow()"></fa-icon>
+        </div>
 
+        <div class="chat-body">
+          <div class="chat-messages" id="chatMessages">
+            @for (message of messages; track $index) {
+              @if(message.user === user) {
+                <div class="chat-message chat-message-me">
+                  <div class="chat-message-user"><b>{{ formatUser(message.user) }}</b></div>
+                  <div class="chat-message-text">{{ message.message }}</div>
+                  <div class="chat-message-time">{{ formatTimestamp(message.date) }}</div>
+                </div>
+              }
+              @else {
+                <div class="chat-message chat-message-other">
+                  <div class="chat-message-user"><b>{{ formatUser(message.user) }}</b></div>
+                  <div class="chat-message-text">{{ message.message }}</div>
+                  <div class="chat-message-time">{{ formatTimestamp(message.date) }}</div>
+                </div>
+              }
+            }
+          </div>
+        </div>
+
+        <div class="chat-footer d-flex justify-content-around">
+          <input type="text" class="form-control" placeholder="Escribe un mensaje..." [(ngModel)]="messageText" (keyup.enter)="sendMessage()">
+          <button class="btn btn-primary btn-enviar" (click)="sendMessage()">Enviar</button>
+        </div>
+      </div>
+    }
+  }
+  
   <router-outlet />
+  

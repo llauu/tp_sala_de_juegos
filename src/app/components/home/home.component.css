@@ -1,5 +1,37 @@
-.main-h {
-    font-size: 55px;
+.bg-header {
+    height: 250px;
+}
+
+.main-cartel {
+    width: 450px;
+    top: -8%;
+    right: 38%;
+    position:absolute;
+    z-index: 1;
+}
+
+@media (max-width: 1400px) {
+    .main-cartel {
+        width: 350px;
+        right: 38%;
+        top: -3%;
+    }
+
+    .bg-header {
+        height: 220px;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-cartel {
+        width: 300px;
+        top: -1%;
+        left: 13%;
+    }
+    
+    .bg-header {
+        height: 200px;
+    }
 }
 
 
