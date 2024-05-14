@@ -1,0 +1,82 @@
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;
+    width: 60%;
+    background-color: #2b95ff;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.game-input {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60%;
+    width: 100%;
+    background-color: #E4E4E4;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.ahorcado-palabra {
+    display: flex;
+    justify-content: center;
+    font-size: 90px;
+    color: #000;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+}
+
+.ahorcado-letra {
+    margin: 0 10px;
+}
+
+.heart {
+    font-size: 38px;
+    color: rgb(255, 67, 67);
+}
+
+.not-heart {
+    font-size: 38px;
+    color: rgb(37, 37, 37);
+}
+
+.keyboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 60%;
+    background-color: #E4E4E4;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.letter {
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: none;
+    background-color: #D8D8D8;
+    border-radius: 3px;
+    margin: 2px;
+}
+
+.letter:hover {
+    background-color: #c1c0c0;
+}

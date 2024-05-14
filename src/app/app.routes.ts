@@ -1,18 +1,14 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
-    {path: 'home', component: HomeComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'quien-soy', component: QuienSoyComponent},
-    {path: 'register', component: RegisterComponent},
+    {path: 'home', loadComponent: () => import('./components/home/home.component').then(m => m.HomeComponent)},
+    {path: 'login', loadComponent: () => import('./components/login/login.component').then(m => m.LoginComponent)},
+    {path: 'quien-soy', loadComponent: () => import('./components/quien-soy/quien-soy.component').then(m => m.QuienSoyComponent)},
+    {path: 'register', loadComponent: () => import('./components/register/register.component').then(m => m.RegisterComponent)},
+    {path: 'ahorcado', loadComponent: () => import('./components/ahorcado/ahorcado.component').then(m => m.AhorcadoComponent)},
+    {path: 'mayor-o-menor', loadComponent: () => import('./components/mayor-o-menor/mayor-o-menor.component').then(m => m.MayorOMenorComponent)},
 
 
-    
-    {path: '**', component: PageNotFoundComponent},
+    {path: '**', loadComponent: () => import('./components/page-not-found/page-not-found.component').then(m => m.PageNotFoundComponent)},
 ];
