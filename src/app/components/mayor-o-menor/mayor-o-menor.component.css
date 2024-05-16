@@ -1,0 +1,169 @@
+
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;
+    width: 60%;
+    background-color: #2b95ff;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.game-input {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60%;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.card {
+    width: 200px;
+    height: 300px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: none;
+}
+
+.card-container {
+    width: 100%;
+}
+
+.separador {
+    width: 60%;
+    height: 1px;
+    background-color: #E4E4E4;
+
+}
+
+.img-orden {
+    width: 300px;
+}
+
+.game-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 60%;
+    background-color: #E4E4E4;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.btn-custom {
+    width: 200px;
+    height: 70px;
+}
+
+.btn-up-down {
+    display: flex;
+    flex-direction: column;
+}
+
+.alert-finish {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 65vh;
+    z-index: 1;
+    padding: 20px;
+}
+
+
+.alert-finish-win {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 65vh;
+    z-index: 1;
+    padding: 20px;
+}
+
+.card-img-alert {
+    width: 200px;
+}
+
+
+
+@media screen and (max-width: 1440px){
+    .game {
+        width: 90%;
+    }
+
+    .game-buttons {
+        width: 80%;
+        height: 35%;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .game {
+        width: 90%;
+    }
+
+    .game-buttons {
+        width: 80%;
+        height: 35%;
+        flex-direction: column;
+    }
+    
+    .img-orden {
+        width: 200px;
+        margin-bottom: 5%;
+    }
+    
+    .btn-custom {
+        width: 110px;
+        height: 55px;
+    }
+
+    .btn-up-down {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .alert-finish {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90vw;
+        height: 60vh;
+        z-index: 1;
+        padding: 0px;
+    }
+
+    .alert-finish-win {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90vw;
+        height: 40vh;
+        z-index: 1;
+        padding: 0px;
+    }
+    
+    .card-img-alert {
+        width: 180px;
+    }
+}

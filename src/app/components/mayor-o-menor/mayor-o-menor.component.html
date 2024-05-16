@@ -1,1 +1,68 @@
-<p>mayor-o-menor works!</p>
+
+<div class="game-container d-flex justify-content-center align-items-center">
+    <div class="game shadow mt-5">
+        <div class="game-input">
+            <div class="d-flex flex-column align-items-center justify-content-center">
+
+                @if(!gameStarted) {
+                    <h1 class="text-center w-75 ">¿Mayor o Menor?</h1>
+                    <div class="separador mt-4 mb-3"></div>
+                    <h5 class="text-center mb-3 w-75">A partir de un mazo de cartas deberas adivinar si la siguiente carta sera mayor o menor que la actual.</h5>
+                    <h5 class="text-center mb-3">¡Suerte!</h5>
+                }
+                @else {
+                    <h1 class="text-center mb-3 ">¿La siguiente sera Mayor o Menor?</h1>
+                }
+
+                <div class="card-container d-flex justify-content-center align-items-center">
+                    <div *ngIf="actualCard" class="card">
+                        <img [src]="actualCard.image" class="card-img-top shadow-sm " alt="...">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div *ngIf="gameOver" class="container-alert position-absolute z-3 mt-5">
+            @if (!stillPlay) {
+                <div class="alert alert-danger alert-finish d-flex flex-column justify-content-between" role="alert">
+                    <h2 class="alert-heading mt-3">¡Perdiste! =(</h2>
+                    <h4>La siguiente carta era:</h4>
+                    <img [src]="actualCard.image" class="card-img-alert shadow-sm " alt="...">
+                    <hr>
+                    <h4 class="text-center">Puntuacion: {{playerScore}}</h4>
+                    <h5 class="mb-3">¿Quieres jugar de nuevo?</h5>
+                    <button class="btn btn-primary mb-4" (click)="resetGame()">Jugar de nuevo</button>
+                </div>
+            }
+            @else {
+                <div class="alert alert-success alert-finish-win d-flex flex-column justify-content-between " role="alert">
+                    <div class="d-flex flex-column ">
+                        <h2 class="alert-heading mt-3 text-center ">¡Felicidades!</h2>
+                        <h4 class="my-4">Ganaste el juego.</h4>
+                    </div>
+
+                    <h4 class="text-center">Puntuacion: {{playerScore}}</h4>
+                    <hr>
+
+                    <div class="d-flex flex-column ">
+                        <h5 class="my-4">¿Quieres jugar de nuevo?</h5>
+                        <button class="btn btn-primary mb-4" (click)="resetGame()">Jugar de nuevo</button>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="game-buttons mb-4 shadow">
+            <img src="../../../assets/juegos/orden-cartas.png" class="img-orden" alt="">
+
+            <button *ngIf="!gameStarted" class="btn btn-primary btn-custom" (click)="getCard('start')">Comenzar</button>
+            
+            <div class="btn-up-down">
+                <button *ngIf="gameStarted && stillPlay" class="btn btn-success btn-custom mx-1 my-2" (click)="getCard('up')"><fa-icon [icon]="faArrowUp" class="not-heart mx-1"></fa-icon></button>
+                <button *ngIf="gameStarted && stillPlay" class="btn btn-danger btn-custom mx-1 my-2" (click)="getCard('down')"><fa-icon [icon]="faArrowDown" class="not-heart mx-1"></fa-icon></button>
+            </div>
+        </div>
+
+    </div>
+</div>

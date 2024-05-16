@@ -16,7 +16,7 @@ export class AhorcadoComponent {
   wordUser: string[] = [];
   lifes: number = 6;
   lose: boolean = false;
-  gameFinish: boolean = false;
+  gameOver: boolean = false;
   faHeart = faHeart;
 
 
@@ -31,12 +31,12 @@ export class AhorcadoComponent {
     this.tryLetterInWord(letter, this.wordSelected);
 
     if(this.gameFinished()) {
-      this.gameFinish = true;
+      this.gameOver = true;
     }
     else {
       if(this.lifes === 0) {
         this.lose = true;
-        this.gameFinish = true;
+        this.gameOver = true;
       }
     }
 
@@ -83,7 +83,7 @@ export class AhorcadoComponent {
     this.wordUser = [];
     this.lifes = 6;
     this.lose = false;
-    this.gameFinish = false;
+    this.gameOver = false;
     this.initializeWordUser();
   }
 

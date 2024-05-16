@@ -80,3 +80,48 @@
 .letter:hover {
     background-color: #c1c0c0;
 }
+
+
+@media screen and (max-width: 768px){
+    .game {
+        width: 95%;
+    }
+
+    .game-input {
+        flex-direction: column;
+    }
+
+    .ahorcado-palabra {
+        font-size: 50px;
+    }
+    
+    .heart {
+        font-size: 28px;
+    }
+
+    .not-heart {
+        font-size: 28px;
+    }
+
+    .keyboard {
+        width: 98%;
+        height: 35%;
+        flex-direction: column;
+    }
+    
+    .letter {
+        font-size: 19px;
+        width: 35px;
+        height: 50px;
+        text-align: center;
+        border: none;
+        background-color: #D8D8D8;
+        border-radius: 3px;
+        margin: 1px;
+    }
+    
+    .foto-ahorcado {
+        width: 100px;
+    }
+
+}

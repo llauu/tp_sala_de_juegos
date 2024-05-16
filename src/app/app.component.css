@@ -158,6 +158,14 @@
     color: #4d4d4d;
 }
 
+.icono {
+    width: 185px;
+}
+
+.fantasmas {
+    width: 75px;
+}
+
 @media screen and (max-width: 768px) {
     .chat-window {
         width: 100%;
@@ -172,5 +180,13 @@
 
     .chat-message-time {
         margin-left: 45%;
+    }
+
+    .icono {
+        width: 150px;
+    }
+
+    .fantasmas {
+        width: 65px;
     }
 }

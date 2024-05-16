@@ -2,11 +2,11 @@
 <div class="game-container d-flex justify-content-center align-items-center">
     <div class="game shadow mt-5">
         <div class="game-input">
-            <img *ngIf="!lose" src="../../../assets/juegos/persona_ahorcado.png" class="ms-5" alt="Ahorcado" width="180">
-            <img *ngIf="lose" src="../../../assets/juegos/persona_ahorcado_perdio.png" class="ms-5" alt="Ahorcado perdio" width="180">
+            <img *ngIf="!lose" src="../../../assets/juegos/persona_ahorcado.png" class="foto-ahorcado" alt="Ahorcado" width="180">
+            <img *ngIf="lose" src="../../../assets/juegos/persona_ahorcado_perdio.png" class="foto-ahorcado" alt="Ahorcado perdio" width="180">
 
             <div class="d-flex flex-column align-items-center justify-content-center">
-                <div class="mb-5 mt-1">
+                <div class="hearts mb-5 mt-1">
                     @for (heart of getLifesArray(); track $index) {
                         <fa-icon [icon]="faHeart" class="heart mx-1"></fa-icon>
                     }
@@ -24,23 +24,23 @@
             </div>
         </div>
 
-        <div *ngIf="gameFinish" class="container-alert position-absolute z-3 mt-5">
+        <div *ngIf="gameOver" class="container-alert position-absolute z-3 mt-5">
             @if (lose) {
                 <div class="alert alert-danger p-3" role="alert">
-                    <h4 class="alert-heading">¡Lo siento!</h4>
-                    <p>Has perdido el juego, la palabra era: <strong>{{wordSelected}}</strong></p>
+                    <h4 class="alert-heading">¡Lo siento! =(</h4>
+                    <p>Has perdido, la palabra era: <strong>{{wordSelected}}</strong></p>
                     <hr>
                     <p class="mb-0">¿Quieres jugar de nuevo?</p>
-                    <button class="btn btn-primary mt-3" (click)="resetGame()">Reiniciar</button>
+                    <button class="btn btn-primary mt-3" (click)="resetGame()">Jugar de nuevo</button>
                 </div>
             }
             @else {
                 <div class="alert alert-success" role="alert">
                     <h4 class="alert-heading">¡Felicidades!</h4>
-                    <p>Has ganado el juego, la palabra era: <strong>{{wordSelected}}</strong></p>
+                    <p>Has ganado, la palabra era: <strong>{{wordSelected}}</strong></p>
                     <hr>
                     <p class="mb-0">¿Quieres jugar de nuevo?</p>
-                    <button class="btn btn-primary mt-3" (click)="resetGame()">Reiniciar</button>
+                    <button class="btn btn-primary mt-3" (click)="resetGame()">Jugar de nuevo</button>
                 </div>
             }
         </div>
