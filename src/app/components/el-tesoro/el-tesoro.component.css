@@ -1,0 +1,67 @@
+
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;
+    width: 60%;
+    background-color: #2b95ff;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.map {
+    height: 100%;
+}
+
+.sand-locker {
+    border-radius: 3px;
+    margin: 1px;
+    cursor: pointer;
+    border: solid 1px #a17f19;
+}
+
+.hints {
+    height: 35%;
+    width: 100%;
+    background-color: #E4E4E4;
+}
+
+.hint h3 {
+    font-size: 50px;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+
+@media screen and (max-width: 768px) {
+    .game {
+        width: 90%;
+        height: 85%;
+    }
+    
+    .sand-locker {
+        width: 40px;
+    }
+    
+    .hints {
+        height: 45%;
+    }
+
+    .hint h3 {
+        font-size: 35px;
+    }
+}

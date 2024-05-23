@@ -1,0 +1,91 @@
+
+<div class="game-container d-flex justify-content-center align-items-center">
+    <div class="game shadow mt-5">
+        <div *ngIf="gameOver" class="container-alert position-absolute z-3 mt-5" role="alert">
+            <div class="alert alert-info" role="alert">
+                <h4 class="alert-heading">Game over</h4>
+                <p>Your final score is: <strong>{{score}} points</strong></p>
+                <hr>
+                <button class="btn btn-primary mt-3" (click)="restartGame()">Play again</button>
+            </div>
+        </div>
+
+        <div *ngIf="showAnswer"  class="container-alert position-absolute z-3 mt-5" role="alert">
+            @if(correct) {
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Nice!</h4>
+                    <hr>
+                    <button class="btn btn-primary mt-3" (click)="updateQuestion()">Next</button>
+                </div>
+            } @else {
+                <div class="alert alert-danger p-3" role="alert">
+                    <h4 class="alert-heading">Fail! =(</h4>
+                    <p>The correct answer was: <strong>{{correctAnswer}}</strong></p>
+                    <hr>
+                    <button class="btn btn-primary mt-3" (click)="updateQuestion()">Next</button>
+                </div>
+            }
+        </div>
+
+        <div class="game-input">
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                @if(!gameStarted) {
+                    <div class="d-flex flex-column justify-content-around preguntados-home">
+                        <h1 class="text-center">Preguntados<img class="ms-2" src="../../../assets/juegos/eeuu.png" height="25" width="45"></h1>
+
+                        <p class="text-center mb-5 desc">Immerse yourself in a world of knowledge. Answer questions and challenge your friends in this amazing trivia game.</p>
+
+                        <div class="d-flex">
+                            <div class="form-floating w-50 m-3">
+                                <select class="form-select" id="category" aria-label="Category">
+                                    <option value="21">Sports</option>
+                                    <option value="17">Science & Nature</option>
+                                    <option value="22">Geography</option>
+                                    <option value="23">History</option>
+                                    <option value="25">Art</option>
+                                </select>
+                                <label for="category">Category</label>
+                            </div>
+        
+                            <div class="form-floating w-50 m-3">
+                                <select class="form-select" id="difficulty" aria-label="Difficulty">
+                                    <option selected value="easy">Easy</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="hard">Hard</option>
+                                </select>
+                                <label for="difficulty">Difficulty</label>
+                            </div>
+                        </div>
+    
+                        
+                    </div>
+                } 
+                @else {
+                    <div class="q-container d-flex flex-column justify-content-center align-items-center w-100 rounded ">
+                        <h4 class="my-3">Question {{numQuestion}} of 5</h4>
+                        <img src="{{image}}" width="290" height="200" alt="">
+                        <p class="m-0">{{category}}</p>
+                        <h3 class="text-center mt-4 mb-3 w-75" [innerHTML]="question"></h3>
+                    </div>
+                }
+            </div>
+        </div>
+
+        @if(gameStarted) {
+            <div class="d-flex justify-content-center align-items-center ">
+                <div class="options d-flex flex-column mb-5">
+                    @for (a of answers; track $index) {
+                        <button class="btn btn-light mt-3 option" (click)="check(a)" [innerHTML]="a"></button>
+                    }
+                </div>
+            </div>
+        }
+        @else {
+            <div class="d-flex justify-content-center align-items-center h-25">
+
+                <button class="btn btn-primary btn-start" (click)="getQuestions()">Start</button>
+            </div>
+        }
+
+    </div>
+</div>

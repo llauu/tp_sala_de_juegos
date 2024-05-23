@@ -24,11 +24,14 @@ export class AhorcadoComponent {
     this.wordSelected = this.getWord();
     this.initializeWordUser();
 
-    console.log(this.wordSelected);
+    // console.log(this.wordSelected);
   }
 
-  getLetter(letter: string) {
+  getLetter(letter: string, event: MouseEvent) {
     this.tryLetterInWord(letter, this.wordSelected);
+
+    const buttonElement = event.target as HTMLButtonElement;
+    buttonElement.setAttribute('disabled', '');
 
     if(this.gameFinished()) {
       this.gameOver = true;
@@ -41,6 +44,24 @@ export class AhorcadoComponent {
     }
 
     return letter;
+  }
+
+  resetButtons() {
+    const row1 = document.querySelectorAll('.row-1 button');
+    const row2 = document.querySelectorAll('.row-2 button');
+    const row3 = document.querySelectorAll('.row-3 button');
+
+    row1.forEach((button) => {
+      button.removeAttribute('disabled');
+    });
+
+    row2.forEach((button) => {
+      button.removeAttribute('disabled');
+    });
+
+    row3.forEach((button) => {
+      button.removeAttribute('disabled');
+    });
   }
 
   getWord() {
@@ -85,6 +106,7 @@ export class AhorcadoComponent {
     this.lose = false;
     this.gameOver = false;
     this.initializeWordUser();
+    this.resetButtons();
   }
 
   getLifesArray() {
@@ -94,5 +116,4 @@ export class AhorcadoComponent {
   getNotLifesArray() {
     return new Array(6 - this.lifes);
   }
-
 }

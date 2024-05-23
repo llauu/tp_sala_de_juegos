@@ -8,6 +8,8 @@ export const routes: Routes = [
     {path: 'register', loadComponent: () => import('./components/register/register.component').then(m => m.RegisterComponent)},
     {path: 'ahorcado', loadComponent: () => import('./components/ahorcado/ahorcado.component').then(m => m.AhorcadoComponent)},
     {path: 'mayor-o-menor', loadComponent: () => import('./components/mayor-o-menor/mayor-o-menor.component').then(m => m.MayorOMenorComponent)},
+    {path: 'preguntados', loadComponent: () => import('./components/preguntados/preguntados.component').then(m => m.PreguntadosComponent)},
+    {path: 'el-tesoro', loadComponent: () => import('./components/el-tesoro/el-tesoro.component').then(m => m.ElTesoroComponent)},
 
 
     {path: '**', loadComponent: () => import('./components/page-not-found/page-not-found.component').then(m => m.PageNotFoundComponent)},
