@@ -8,29 +8,35 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class TriviaService {
-  private apiUrlQuestion = 'https://opentdb.com/api.php?amount=5&type=multiple';
   private apiUrlImage = 'https://api.pexels.com/v1/search';
-  private apiKey = environment.pexel_API_KEY; 
+  private apiKeyImage = environment.pexel_API_KEY; 
+  private apiKey = environment.quiz_API_KEY; 
 
   constructor(private http: HttpClient) {}
 
   getImage(query: string, perPage: number = 5): Observable<any> {
     const headers = new HttpHeaders({
-      'Authorization': this.apiKey
+      'Authorization': this.apiKeyImage
     });
 
     const params = {
       query: query,
       per_page: perPage.toString(),
       // per_page: perPage.toString(),
-      page: Math.floor(Math.random() * 100).toString(),
-      orientation: 'landscape'
+      page: 0,
+      orientation: 'landscape',
+      locale: 'es-ES'
     };
     
     return this.http.get<any>(this.apiUrlImage, { headers: headers, params: params });
   }
 
-  getQuestions(category: string, difficulty: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrlQuestion}&category=${category}&difficulty=${difficulty}`);
+  getQuestions(category: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': this.apiKey
+    });
+
+    // return this.http.get<any>(`${this.apiUrlQuestion}&category=${category}&difficulty=${difficulty}`);
+    return this.http.get<any>(`https://api.quiz-contest.xyz/questions?limit=5&page=1&category=${category}&format=multiple`, { headers: headers });
   }
 }

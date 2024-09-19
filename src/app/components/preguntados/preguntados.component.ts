@@ -34,12 +34,13 @@ export class PreguntadosComponent {
     if (selectElement) {
       this.category = selectElement.options[selectElement.selectedIndex].text;
       this.categoryNumber = selectElement.options[selectElement.selectedIndex].value;
-      this.difficulty = (<HTMLInputElement>document.getElementById('difficulty')).value;
 
-      this.triviaService.getQuestions(this.categoryNumber, this.difficulty).subscribe(data => {
+      this.triviaService.getQuestions(this.categoryNumber).subscribe(data => {
         this.gameStarted = true;
 
-        this.questions = data;
+        this.questions = data.questions;
+
+        // console.log(data.questions);
 
         this.triviaService.getImage(this.category).subscribe(dataImg => {
           this.images = dataImg.photos;
@@ -53,15 +54,16 @@ export class PreguntadosComponent {
     this.showAnswer = false;
 
     if(this.numQuestion < 5) {
-      this.question = this.questions.results[this.numQuestion].question;
-      this.correctAnswer = this.questions.results[this.numQuestion].correct_answer;
-      this.answers = this.questions.results[this.numQuestion].incorrect_answers;
+      this.question = this.questions[this.numQuestion].question;
+      this.correctAnswer = this.questions[this.numQuestion].correctAnswers;
+      this.answers = this.questions[this.numQuestion].incorrectAnswers;
   
       // Agrego la respuesta correcta en una posicion aleatoria
-      this.answers.splice(Math.floor(Math.random() * 4), 0, this.questions.results[this.numQuestion].correct_answer);
+      this.answers.splice(Math.floor(Math.random() * 4), 0, this.questions[this.numQuestion].correctAnswers);
       
       // this.triviaService.getImage(this.category).subscribe(data => {
-      this.image = this.images[this.numQuestion].src.original;
+        this.image = this.images[this.numQuestion].src.original;
+        console.log(this.images)
       // });
   
       this.numQuestion++;

@@ -71,7 +71,6 @@ export class AppComponent {
 
       this.messageText = '';
     }
-    
   }
 
   getMessages() {

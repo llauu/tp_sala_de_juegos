@@ -24,7 +24,6 @@ export class LoginComponent {
 
   }
 
-
   login() {
     this.authService.login(this.email, this.pass)
       .then(res => {
@@ -53,7 +52,6 @@ export class LoginComponent {
         }
       });
   }
-
 
   loginWithGoogle() {
     this.authService.loginWithGoogle()

@@ -1,90 +1,88 @@
+<nav class="custom-nav navbar navbar-expand-lg navbar-light shadow">
+  <a class="navbar-brand d-flex align-items-center" href="#">
+    <img src="../assets/iconic.png" class="d-inline-block align-top ml-2 mt-1 icono" alt="Icono">
+    <img src="../assets/fantasmas.png" class="d-inline-block align-top ml-2 mt-1 fantasmas" alt="Icono">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav nav-opt">
+      <li class="nav-item mx-3">
+        <a class="nav-link" routerLink="home" routerLinkActive="ruta-activa">Inicio</a>
+      </li>
+      <li class="nav-item mx-3">
+        <a class="nav-link" routerLink="quien-soy" routerLinkActive="ruta-activa">Quien soy</a>
+      </li>
 
-  <nav class="custom-nav navbar navbar-expand-lg navbar-light shadow">
-    <a class="navbar-brand d-flex align-items-center" href="#">
-      <img src="../assets/iconic.png" class="d-inline-block align-top ml-2 mt-1 icono" alt="Icono">
-      <img src="../assets/fantasmas.png" class="d-inline-block align-top ml-2 mt-1 fantasmas" alt="Icono">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav nav-opt">
-        <li class="nav-item mx-3">
-          <a class="nav-link" routerLink="home" routerLinkActive="ruta-activa">Inicio</a>
-        </li>
-        <li class="nav-item mx-3">
-          <a class="nav-link" routerLink="quien-soy" routerLinkActive="ruta-activa">Quien soy</a>
-        </li>
-
-        @if(this.isLoggedIn) {
-          <li class="nav-item dropdown mx-3">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <fa-icon [icon]="faUser"></fa-icon>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end mb-3 rounded-bottom" aria-labelledby="navbarDropdown">
-              <div class="col text-center">
-                <img src="../assets/perfil.png" width="100" alt="Perfil">
-              </div>
-              <span class="dropdown-item-text">{{ user }}</span> 
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" (click)="logout()"><b>Cerrar sesion</b></a> 
+      @if(this.isLoggedIn) {
+        <li class="nav-item dropdown mx-3">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <fa-icon [icon]="faUser"></fa-icon>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end mb-3 rounded-bottom" aria-labelledby="navbarDropdown">
+            <div class="col text-center">
+              <img src="../assets/perfil.png" width="100" alt="Perfil">
             </div>
-          </li>
-        }
-        @else {
-          <li class="nav-item mx-3">
-            <a class="nav-link" routerLink="login" routerLinkActive="ruta-activa">Iniciar sesion</a>
-          </li>
-        }
-      </ul>
-    </div>
-  </nav>
-
-  @if(this.isLoggedIn) {
-    @if(!this.showChatWindow) {
-      <div class="chat-bubble shadow" (click)="toggleChatWindow()">
-        <fa-icon class="chat-icon" [icon]="faComment"></fa-icon>
-      </div>
-    }
-    
-    @if(this.showChatWindow) {
-      <div class="chat-window d-flex flex-column justify-content-between ">
-        <div class="chat-header">
-          <img src="../assets/icono.png" width="37" height="37" class="d-inline-block align-top mx-1 mt-1" alt="Icono">
-          <p class="h-chat mt-4">#General</p>
-          <img src="../assets/fantasmas.png" width="65" height="65" class="d-inline-block align-top ms-1 ml-2 mt-2" alt="Icono">
-        
-          <fa-icon class="close-chat-icon" [icon]="faTimes" (click)="toggleChatWindow()"></fa-icon>
-        </div>
-
-        <div class="chat-body">
-          <div class="chat-messages" id="chatMessages">
-            @for (message of messages; track $index) {
-              @if(message.user === user) {
-                <div class="chat-message chat-message-me">
-                  <div class="chat-message-user"><b>{{ formatUser(message.user) }}</b></div>
-                  <div class="chat-message-text">{{ message.message }}</div>
-                  <div class="chat-message-time">{{ formatTimestamp(message.date) }}</div>
-                </div>
-              }
-              @else {
-                <div class="chat-message chat-message-other">
-                  <div class="chat-message-user"><b>{{ formatUser(message.user) }}</b></div>
-                  <div class="chat-message-text">{{ message.message }}</div>
-                  <div class="chat-message-time">{{ formatTimestamp(message.date) }}</div>
-                </div>
-              }
-            }
+            <span class="dropdown-item-text">{{ user }}</span> 
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()"><b>Cerrar sesion</b></a> 
           </div>
-        </div>
+        </li> 
+      }
+      @else {
+        <li class="nav-item mx-3">
+          <a class="nav-link" routerLink="login" routerLinkActive="ruta-activa">Iniciar sesion</a>
+        </li>
+      }
+    </ul>
+  </div>
+</nav>
 
-        <div class="chat-footer d-flex justify-content-around">
-          <input type="text" class="form-control" placeholder="Escribe un mensaje..." [(ngModel)]="messageText" (keyup.enter)="sendMessage()">
-          <button class="btn btn-primary btn-enviar" (click)="sendMessage()">Enviar</button>
-        </div>
-      </div>
-    }
+@if(this.isLoggedIn) {
+  @if(!this.showChatWindow) {
+    <div class="chat-bubble shadow" (click)="toggleChatWindow()">
+      <fa-icon class="chat-icon" [icon]="faComment"></fa-icon>
+    </div>
   }
   
-  <router-outlet />
-  
+  @if(this.showChatWindow) {
+    <div class="chat-window d-flex flex-column justify-content-between ">
+      <div class="chat-header">
+        <img src="../assets/icono.png" width="37" height="37" class="d-inline-block align-top mx-1 mt-1" alt="Icono">
+        <p class="h-chat mt-4">#General</p>
+        <img src="../assets/fantasmas.png" width="65" height="65" class="d-inline-block align-top ms-1 ml-2 mt-2" alt="Icono">
+      
+        <fa-icon class="close-chat-icon" [icon]="faTimes" (click)="toggleChatWindow()"></fa-icon>
+      </div>
+
+      <div class="chat-body">
+        <div class="chat-messages" id="chatMessages">
+          @for (message of messages; track $index) {
+            @if(message.user === user) {
+              <div class="chat-message chat-message-me">
+                <div class="chat-message-user"><b>{{ formatUser(message.user) }}</b></div>
+                <div class="chat-message-text">{{ message.message }}</div>
+                <div class="chat-message-time">{{ formatTimestamp(message.date) }}</div>
+              </div>
+            }
+            @else {
+              <div class="chat-message chat-message-other">
+                <div class="chat-message-user"><b>{{ formatUser(message.user) }}</b></div>
+                <div class="chat-message-text">{{ message.message }}</div>
+                <div class="chat-message-time">{{ formatTimestamp(message.date) }}</div>
+              </div>
+            }
+          }
+        </div>
+      </div>
+
+      <div class="chat-footer d-flex justify-content-around">
+        <input type="text" class="form-control" placeholder="Escribe un mensaje..." [(ngModel)]="messageText" (keyup.enter)="sendMessage()">
+        <button class="btn btn-primary btn-enviar" (click)="sendMessage()">Enviar</button>
+      </div>
+    </div>
+  }
+}
+
+<router-outlet />
